@@ -1,4 +1,4 @@
-import axios from "axios";
+//import axios from "axios";
 import {BACKEND} from "../configs/backend-api";
 import {IVehicle} from "../interfaces/vehicles.interface";
 import vehicles from "../dummyData/vehicles.json";
