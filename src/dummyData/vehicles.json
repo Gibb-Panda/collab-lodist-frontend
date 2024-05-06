@@ -1,0 +1,122 @@
+[
+  {
+    "id": 1,
+    "license_plate_number": "XYZ789",
+    "vehicle_model": "Ford F-150",
+    "year_of_manufacture": 2018,
+    "vin_identification_number": "1FTFW1E13JFC31632",
+    "horse_power": 375,
+    "capacity": 5,
+    "load_capacity": 1500,
+    "insurance_information": "Provider: PQR Insurance, Policy Number: XYZ987654",
+    "tour": 1
+  },
+  {
+    "id": 2,
+    "license_plate_number": "GHI012",
+    "vehicle_model": "Chevrolet Silverado",
+    "year_of_manufacture": 2022,
+    "vin_identification_number": "3GCPWCET8NG122620",
+    "horse_power": 420,
+    "capacity": 5,
+    "load_capacity": 1800,
+    "insurance_information": "Provider: DEF Insurance, Policy Number: GHI987654",
+    "tour": 2
+  },
+  {
+    "id": 3,
+    "license_plate_number": "JKL345",
+    "vehicle_model": "Tesla Model S",
+    "year_of_manufacture": 2021,
+    "vin_identification_number": "5YJSA1E2XMF397663",
+    "horse_power": 670,
+    "capacity": 5,
+    "load_capacity": 400,
+    "insurance_information": "Provider: MNO Insurance, Policy Number: JKL543210",
+    "tour": 3
+  },
+  {
+    "id": 4,
+    "license_plate_number": "MNO678",
+    "vehicle_model": "BMW X5",
+    "year_of_manufacture": 2019,
+    "vin_identification_number": "5UXCR6C51KLL27174",
+    "horse_power": 456,
+    "capacity": 5,
+    "load_capacity": 900,
+    "insurance_information": "Provider: STU Insurance, Policy Number: MNO123456",
+    "tour": 4
+  },
+  {
+    "id": 5,
+    "license_plate_number": "PQR901",
+    "vehicle_model": "Audi Q7",
+    "year_of_manufacture": 2020,
+    "vin_identification_number": "WA1VAAF77LD039045",
+    "horse_power": 335,
+    "capacity": 5,
+    "load_capacity": 700,
+    "insurance_information": "Provider: VWX Insurance, Policy Number: PQR654321",
+    "tour": 5
+  },
+  {
+    "id": 6,
+    "license_plate_number": "STU234",
+    "vehicle_model": "Mercedes-Benz GLE",
+    "year_of_manufacture": 2023,
+    "vin_identification_number": "4JGDA5HB8MA114082",
+    "horse_power": 429,
+    "capacity": 5,
+    "load_capacity": 1000,
+    "insurance_information": "Provider: YZA Insurance, Policy Number: STU987654",
+    "tour": 6
+  },
+  {
+    "id": 7,
+    "license_plate_number": "VWX567",
+    "vehicle_model": "Jeep Wrangler",
+    "year_of_manufacture": 2017,
+    "vin_identification_number": "1C4BJWEG3JL804792",
+    "horse_power": 285,
+    "capacity": 4,
+    "load_capacity": 800,
+    "insurance_information": "Provider: NOP Insurance, Policy Number: VWX543210",
+    "tour": 7
+  },
+  {
+    "id": 8,
+    "license_plate_number": "YZA890",
+    "vehicle_model": "Subaru Outback",
+    "year_of_manufacture": 2021,
+    "vin_identification_number": "4S4BTANC2M3228703",
+    "horse_power": 182,
+    "capacity": 5,
+    "load_capacity": 900,
+    "insurance_information": "Provider: QRS Insurance, Policy Number: YZA123456",
+    "tour": 8
+  },
+  {
+    "id": 9,
+    "license_plate_number": "BCD345",
+    "vehicle_model": "Hyundai Santa Fe",
+    "year_of_manufacture": 2019,
+    "vin_identification_number": "5NMS53AA8KH032775",
+    "horse_power": 235,
+    "capacity": 5,
+    "load_capacity": 600,
+    "insurance_information": "Provider: EFG Insurance, Policy Number: BCD654321",
+    "tour": 9
+  },
+  {
+    "id": 10,
+    "license_plate_number": "EFG678",
+    "vehicle_model": "Kia Telluride",
+    "year_of_manufacture": 2022,
+    "vin_identification_number": "5XYP64HC5NG180796",
+    "horse_power": 291,
+    "capacity": 8,
+    "load_capacity": 1000,
+    "insurance_information": "Provider: HIJ Insurance, Policy Number: EFG987654",
+    "tour": 10
+  }
+]
