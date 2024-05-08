@@ -23,6 +23,8 @@ import DeleteIcon from "@mui/icons-material/Delete";
 import FilterListIcon from "@mui/icons-material/FilterList";
 import { visuallyHidden } from "@mui/utils";
 import { Button } from "@mui/material";
+import ButtonAppBar from "../header/header";
+import Footer from "../footer/footer";
 
 interface Data {
   id: number;
@@ -496,6 +498,7 @@ export const Vehicles: React.FC = () => {
 
   return (
     <>
+    <ButtonAppBar />
       <h1>Hello Vehicles!</h1>
       <Button onClick={() => getVehicles()}>get vehicles</Button>
       {vehicles.map((vehicle) => {
@@ -508,7 +511,8 @@ export const Vehicles: React.FC = () => {
           </>
         );
       })}
-      <EnhancedTable></EnhancedTable>
+      {/* <EnhancedTable></EnhancedTable> */}
+      <Footer></Footer>
     </>
   );
 };
