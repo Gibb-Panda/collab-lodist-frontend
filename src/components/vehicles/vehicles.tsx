@@ -501,17 +501,7 @@ export const Vehicles: React.FC = () => {
     <ButtonAppBar />
       <h1>Hello Vehicles!</h1>
       <Button onClick={() => getVehicles()}>get vehicles</Button>
-      {vehicles.map((vehicle) => {
-        return (
-          <>
-            <p>vehicle license plate: {vehicle.license_plate_number}</p>
-            <p>vehicle_model: {vehicle.vehicle_model}</p>
-            <p>year_of_manufacture: {vehicle.year_of_manufacture}</p>
-            <p>capacity: {vehicle.capacity}</p>
-          </>
-        );
-      })}
-      {/* <EnhancedTable></EnhancedTable> */}
+       <EnhancedTable></EnhancedTable>
       <Footer></Footer>
     </>
   );
