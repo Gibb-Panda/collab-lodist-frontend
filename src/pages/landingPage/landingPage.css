@@ -1,0 +1,8 @@
+img {
+    max-width: 100%;
+}
+
+.background {
+    background-image: url("/public/logistics.jpg");
+    background-size: cover;
+}
