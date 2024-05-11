@@ -25,6 +25,7 @@ import { visuallyHidden } from "@mui/utils";
 import { Button } from "@mui/material";
 import ButtonAppBar from "../header/header";
 import Footer from "../footer/footer";
+import { LandingPage } from "../../pages/landingPage/landingPage";
 
 interface Data {
   id: number;
@@ -498,6 +499,7 @@ export const Vehicles: React.FC = () => {
 
   return (
     <>
+    <LandingPage />
     <ButtonAppBar />
       <h1>Hello Vehicles!</h1>
       <Button onClick={() => getVehicles()}>get vehicles</Button>
