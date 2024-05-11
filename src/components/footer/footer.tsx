@@ -1,31 +1,31 @@
-
 import * as React from 'react';
+import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
-import BottomNavigation from '@mui/material/BottomNavigation';
-import BottomNavigationAction from '@mui/material/BottomNavigationAction';
-import RestoreIcon from '@mui/icons-material/Restore';
-import FavoriteIcon from '@mui/icons-material/Favorite';
-import LocationOnIcon from '@mui/icons-material/LocationOn';
+import Toolbar from '@mui/material/Toolbar';
+import Typography from '@mui/material/Typography';
+import Button from '@mui/material/Button';
+import IconButton from '@mui/material/IconButton';
+import MenuIcon from '@mui/icons-material/Menu';
 
-export default function SimpleBottomNavigation() {
-  const [value, setValue] = React.useState(0);
-
+export default function ButtonAppBar() {
   return (
-    <Box sx={{ width: 500 }}>
-      <BottomNavigation
-        showLabels
-        value={value}
-        onChange={(event, newValue) => {
-          setValue(newValue);
-        }}
-      >
-        <BottomNavigationAction label="Copyright 2024 Collab Lodist" />
-        <BottomNavigationAction label="Impressum"  />
-        <BottomNavigationAction label="Dataschutz" />
-      </BottomNavigation>
+    <Box sx={{ flexGrow: 1}}>
+      <AppBar position="static" sx={{bgcolor: 'black'}}>
+        <Toolbar>
+        
+            
+          
+          <Button color="inherit" sx={{textTransform: "none"}}>&copy;2024 Collab Lodist</Button>
+          <Button color="inherit"sx={{textTransform: "none"}} >Impressum</Button>
+          <Button color="inherit"sx={{textTransform: "none"}} >Datenschutz</Button>
+          
+
+        </Toolbar>
+      </AppBar>
     </Box>
   );
 }
+
 
 
 
