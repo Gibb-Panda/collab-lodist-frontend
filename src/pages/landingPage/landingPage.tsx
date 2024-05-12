@@ -5,8 +5,6 @@ import ButtonGroup from '@mui/material/ButtonGroup';
 import Button from '@mui/material/Button';
 
 
-
-
 export const LandingPage: React.FC = () => {
   return (
   
@@ -17,7 +15,7 @@ export const LandingPage: React.FC = () => {
 
   <h1>Collab Lodist</h1>;
 
-  <ButtonGroup variant="outlined" size="large" aria-label="Large button group" sx={{bgcolor: 'black'}}>
+  <ButtonGroup className="text" variant="outlined" size="large" aria-label="Large button group" sx={{bgcolor: 'black'}}>
       <Button>Sign up</Button>
       <Button>Login</Button>
     </ButtonGroup>
