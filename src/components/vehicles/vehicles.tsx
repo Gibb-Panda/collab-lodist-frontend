@@ -27,6 +27,8 @@ import ButtonAppBar from "../header/header";
 import Header from "../header/header";
 import Footer from "../footer/footer";
 import { LandingPage } from "../../pages/landingPage/landingPage";
+// import { Dashboard } from "@mui/icons-material";
+import DashboardPage from "../dashboardPage/dashboardPage"
 
 interface Data {
   id: number;
@@ -507,6 +509,7 @@ export const Vehicles: React.FC = () => {
       <Button onClick={() => getVehicles()}>get vehicles</Button>
        <EnhancedTable></EnhancedTable>
       <Footer></Footer>
+      <DashboardPage/>
     </>
   );
 };
