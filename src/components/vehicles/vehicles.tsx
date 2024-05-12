@@ -24,6 +24,7 @@ import FilterListIcon from "@mui/icons-material/FilterList";
 import { visuallyHidden } from "@mui/utils";
 import { Button } from "@mui/material";
 import ButtonAppBar from "../header/header";
+import Header from "../header/header";
 import Footer from "../footer/footer";
 import { LandingPage } from "../../pages/landingPage/landingPage";
 
@@ -500,7 +501,8 @@ export const Vehicles: React.FC = () => {
   return (
     <>
     <LandingPage />
-    <ButtonAppBar />
+    {/* <ButtonAppBar /> */}
+    <Header />
       <h1>Hello Vehicles!</h1>
       <Button onClick={() => getVehicles()}>get vehicles</Button>
        <EnhancedTable></EnhancedTable>
