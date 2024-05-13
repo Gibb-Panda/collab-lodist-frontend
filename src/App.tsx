@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import './App.css';
-import {Vehicles} from "./components/vehicles/vehicles";
+import {Commodities} from "./components/vehicles/commodities";
 import {BrowserRouter, Route, Routes} from "react-router-dom";
 import Header from './components/header/header';
 import {LandingPage} from "./pages/landingPage/landingPage";
@@ -15,7 +15,7 @@ function App() {
                 <Header/>
                 <Routes>
                     <Route path="/" element={<LandingPage/>}></Route>
-                    <Route path="/commodities" element={<Vehicles/>}></Route>
+                    <Route path="/commodities" element={<Commodities/>}></Route>
                     <Route path="/dashboard" element={<DashboardPage/>}></Route>
                 </Routes>
                 <Footer></Footer>

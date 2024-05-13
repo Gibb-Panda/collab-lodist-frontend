@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from "react";
 import {IVehicle} from "../../interfaces/vehicles.interface";
 import {getVehicles} from "../../services/vehicles.service";
-import {alpha} from "@mui/material/styles";
+import {alpha, CommonColors} from "@mui/material/styles";
 import Box from "@mui/material/Box";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
@@ -22,7 +22,20 @@ import Switch from "@mui/material/Switch";
 import DeleteIcon from "@mui/icons-material/Delete";
 import FilterListIcon from "@mui/icons-material/FilterList";
 import {visuallyHidden} from "@mui/utils";
-import {Button} from "@mui/material";
+import {
+    Button,
+    Divider,
+    Grid,
+    InputAdornment,
+    List,
+    ListItem,
+    ListItemButton,
+    ListItemText,
+    Modal,
+    TextField
+} from "@mui/material";
+import {getCommodities} from "../../services/commodity.service";
+import {ICommodity} from "../../interfaces/commodity.interface";
 
 
 interface Data {
@@ -487,20 +500,121 @@ export default function EnhancedTable() {
     );
 }
 
-export const Vehicles: React.FC = () => {
-    const [vehicles, setVehicles] = useState<IVehicle[]>([]);
+export const Commodities: React.FC = () => {
+    const [commodities, setCommodities] = useState<ICommodity[]>([]);
+    const [open, setOpen] = React.useState(false);
+    const [currentOpenCommodity, setCurrentOpenCommodity] = useState<ICommodity | null>(null);
+    const handleOpen = (commodity: ICommodity) => {
+        setOpen(true);
+        setCurrentOpenCommodity(commodities.find(c => c.id == commodity.id)!);
+
+    }
+    const handleClose = () => setOpen(false);
 
     useEffect(() => {
-        getVehicles().then((r) => {
-            setVehicles(r.data);
+        getCommodities().then((r: { data: ICommodity[] }) => {
+            console.log("htee  commodities: " + JSON.stringify(r));
+            setCommodities(r.data);
+
         });
     }, []);
 
+
+    // const handleCurrentCommodityChange = (event: any) => {
+    //     const { name, value } = event.target;
+    //     const updatedCommodity: ICommodity = {
+    //         ...currentOpenCommodity, // spread the current object
+    //         [name]: value, // update the field with the new value
+    //     };
+    //
+    //     setCurrentOpenCommodity(updatedCommodity);
+    // };
+
+
     return (
         <>
-            <h1>Hello Vehicles!</h1>
-            <Button onClick={() => getVehicles()}>get vehicles</Button>
-            <EnhancedTable></EnhancedTable>
+            <Typography variant="h3" align="center">Commodities</Typography>
+
+            <Box display="flex" justifyContent="center">
+                <List sx={{
+                    width: '90%',
+                    bgcolor: 'black',
+                    justify: "center",
+                    alignItems: "center",
+                }}>
+                    {/*{[1, 2, 3].map((value) => (*/}
+                    {commodities.map(commodity => (
+                        <ListItem
+                            key={commodity.id}
+                            disableGutters
+                            sx={{border: "2px solid grey", borderRadius: 3, margin: "1%", padding: 0}}
+                        >
+                            <ListItemButton component="a" href="#simple-list" onClick={() => handleOpen(commodity)}>
+                                {/*<ListItemText primary="Spam"/>*/}
+                                <Grid container columnSpacing={1}>
+                                    <Grid item xs={3}>
+                                        {/*<Item>1</Item>*/}
+                                        <Typography variant="subtitle1">{commodity.product_name}</Typography>
+                                    </Grid>
+                                    <Grid item xs={3}>
+                                        {/*<Item>1</Item>*/}
+                                        <Typography
+                                            variant="subtitle1">{"expires at " + commodity.expiry_date}</Typography>
+                                    </Grid>
+                                    <Grid item xs={3}>
+                                        {/*<Item>1</Item>*/}
+                                        <Typography variant="subtitle1">{"weighing " + commodity.weight} kg</Typography>
+                                    </Grid>
+                                    <Grid item xs={3}>
+                                        {/*<Item>1</Item>*/}
+                                        <Button sx={{zIndex: 99}} onClick={(e) => {
+                                            alert("eww brotha");
+                                            e?.stopPropagation();
+                                        }}>
+                                            <DeleteIcon></DeleteIcon>
+                                        </Button>
+                                    </Grid>
+                                </Grid>
+                                {/*<Typography variant="subtitle1" sx={{textAlign: "right"}}>bbbbbbbb</Typography>*/}
+                            </ListItemButton>
+                            {/*<ListItemText primary={`Line item ${value}`} />*/}
+                        </ListItem>
+                    ))}
+                </List>
+                {/*<Button onClick={() => console.log(JSON.stringify(currentOpenCommodity))}>log</Button>*/}
+            </Box>
+
+            <Modal
+                open={open}
+                onClose={handleClose}
+                aria-labelledby="modal-modal-title"
+                aria-describedby="modal-modal-description"
+            >
+                <Box sx={{
+                    position: 'absolute' as 'absolute',
+                    top: '50%',
+                    left: '50%',
+                    transform: 'translate(-50%, -50%)',
+                    width: 400,
+                    bgcolor: 'background.paper',
+                    border: '2px solid #000',
+                    boxShadow: 24,
+                    borderRadius: 3,
+                    p: 4,
+                }}>
+                    <Typography id="modal-modal-title" variant="h6" component="h2">
+                        {currentOpenCommodity?.product_name}
+                    </Typography>
+                    <Divider orientation="horizontal" sx={{marginBottom: "5%"}} />
+                    <TextField id="outlined-basic" fullWidth label="weight"
+                               defaultValue={currentOpenCommodity?.weight} InputProps={{
+                        endAdornment: <InputAdornment position="end">kg</InputAdornment>,
+                    }}/>
+                    <Button sx={{color: "grey"}}>Cancel</Button>
+                    <Button>Save</Button>
+                </Box>
+            </Modal>
+
         </>
     );
 };
