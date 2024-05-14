@@ -6,6 +6,10 @@ import Header from './components/header/header';
 import {LandingPage} from "./pages/landingPage/landingPage";
 import Footer from './components/footer/footer';
 import DashboardPage from './components/dashboardPage/dashboardPage';
+import {LoginPage} from "./pages/landingPage/loginPage";
+
+
+
 
 function App() {
 
@@ -17,6 +21,7 @@ function App() {
                     <Route path="/" element={<LandingPage/>}></Route>
                     <Route path="/commodities" element={<Commodities/>}></Route>
                     <Route path="/dashboard" element={<DashboardPage/>}></Route>
+                    <Route path="/login" element={<LoginPage/>}></Route>
                 </Routes>
                 <Footer></Footer>
             </BrowserRouter>

@@ -1,4 +1,4 @@
-function Login() {
+export const LoginPage: React.FC = () => {
 
     return (
         <>
