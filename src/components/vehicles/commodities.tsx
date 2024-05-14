@@ -535,7 +535,9 @@ export const Commodities: React.FC = () => {
     return (
         <>
         <ButtonAppBar />
-            <Typography variant="h3" align="center">Commodities</Typography>
+            <div style={{ backgroundColor: '#4597ff', minHeight: '100vh', padding: '20px' }}>
+
+            <Typography variant="h3" align="center">Waren</Typography>
 
             <Box display="flex" justifyContent="center">
                 <List sx={{
@@ -616,7 +618,7 @@ export const Commodities: React.FC = () => {
                     <Button>Save</Button>
                 </Box>
             </Modal>
-
+        </div>
         </>
     );
 };
