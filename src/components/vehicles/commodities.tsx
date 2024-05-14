@@ -36,6 +36,7 @@ import {
 } from "@mui/material";
 import {getCommodities} from "../../services/commodity.service";
 import {ICommodity} from "../../interfaces/commodity.interface";
+import ButtonAppBar from "../header/header";
 
 
 interface Data {
@@ -533,6 +534,7 @@ export const Commodities: React.FC = () => {
 
     return (
         <>
+        <ButtonAppBar />
             <Typography variant="h3" align="center">Commodities</Typography>
 
             <Box display="flex" justifyContent="center">
