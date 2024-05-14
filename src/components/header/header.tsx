@@ -40,10 +40,10 @@ export default function ButtonAppBar() {
                         }}
                     >
                         <MenuItem onClick={() => handleSelect("/dashboard")}>Dashboard</MenuItem>
-                        <MenuItem onClick={() => handleSelect("/commodities")}>Commodities</MenuItem>
+                        <MenuItem onClick={() => handleSelect("/commodities")}>Waren</MenuItem>
                         <MenuItem onClick={() => handleSelect("/personal")}>Persönlich</MenuItem>
                         <MenuItem onClick={() => handleSelect("/management")}>Verwaltung</MenuItem>
-                        <MenuItem onClick={() => handleSelect("/logistics")}>Logistik</MenuItem>
+                        {/* <MenuItem onClick={() => handleSelect("/logistics")}>Logistik</MenuItem> */}
                     </Menu>
 
                     <IconButton
