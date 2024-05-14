@@ -1,7 +1,8 @@
-function SignUp() {
+export const SignUpPage: React.FC = () => {
 
-    return(
+    return (
         <>
+        <h1>SignUp page</h1>
         </>
     )
 }
