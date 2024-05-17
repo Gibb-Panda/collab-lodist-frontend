@@ -7,7 +7,4 @@ const LOGISTICS = BACKEND.BACKEND_API_URL + BACKEND.api.logistics.base;
 
 export const getCommodities = async (): Promise<{data: ICommodity[]}> => {
     return axios.get(LOGISTICS + BACKEND.api.logistics.commodities);
-        // .then(r => {
-        //     console.log(JSON.stringify(r));
-        // });
 }

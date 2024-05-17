@@ -533,92 +533,90 @@ export const Commodities: React.FC = () => {
 
 
     return (
-        <>
-        <ButtonAppBar />
-            <div style={{ backgroundColor: '#4597ff', minHeight: '100vh', padding: '20px' }}>
+        <div className="commodity-component">
+            <ButtonAppBar/>
+            <div style={{backgroundColor: '#0059c4', minHeight: '100vh', padding: '20px'}}>
 
-            <Typography variant="h3" align="center">Waren</Typography>
+                <Typography variant="h3" align="center">Waren</Typography>
 
-            <Box display="flex" justifyContent="center">
-                <List sx={{
-                    width: '90%',
-                    bgcolor: 'black',
-                    justify: "center",
-                    alignItems: "center",
-                }}>
-                    {/*{[1, 2, 3].map((value) => (*/}
-                    {commodities.map(commodity => (
-                        <ListItem
-                            key={commodity.id}
-                            disableGutters
-                            sx={{border: "2px solid grey", borderRadius: 3, margin: "1%", padding: 0}}
-                        >
-                            <ListItemButton component="a" href="#simple-list" onClick={() => handleOpen(commodity)}>
-                                {/*<ListItemText primary="Spam"/>*/}
-                                <Grid container columnSpacing={1}>
-                                    <Grid item xs={3}>
-                                        {/*<Item>1</Item>*/}
-                                        <Typography variant="subtitle1">{commodity.product_name}</Typography>
+                <Box display="flex" justifyContent="center">
+                    <List sx={{
+                        width: '90%',
+                        justify: "center",
+                        alignItems: "center",
+                    }}>
+                        {commodities.map(commodity => (
+                            <ListItem
+                                key={commodity.id}
+                                disableGutters
+                                sx={{
+                                    border: "2px solid grey",
+                                    borderRadius: 3,
+                                    margin: "1%",
+                                    padding: 0,
+                                    bgcolor: '#2660a3'
+                                }}
+                            >
+                                <ListItemButton component="a" href="#simple-list" onClick={() => handleOpen(commodity)}>
+                                    <Grid container columnSpacing={1}>
+                                        <Grid item xs={3}>
+                                            <Typography variant="subtitle1">{commodity.product_name}</Typography>
+                                        </Grid>
+                                        <Grid item xs={3}>
+                                            <Typography
+                                                variant="subtitle1">{"expires at " + commodity.expiry_date}</Typography>
+                                        </Grid>
+                                        <Grid item xs={3}>
+                                            <Typography
+                                                variant="subtitle1">{"weighing " + commodity.weight} kg</Typography>
+                                        </Grid>
+                                        <Grid item xs={3}>
+                                            <Button sx={{zIndex: 99}} onClick={(e) => {
+                                                alert("eww brotha");
+                                                e?.stopPropagation();
+                                            }}>
+                                                <DeleteIcon></DeleteIcon>
+                                            </Button>
+                                        </Grid>
                                     </Grid>
-                                    <Grid item xs={3}>
-                                        {/*<Item>1</Item>*/}
-                                        <Typography
-                                            variant="subtitle1">{"expires at " + commodity.expiry_date}</Typography>
-                                    </Grid>
-                                    <Grid item xs={3}>
-                                        {/*<Item>1</Item>*/}
-                                        <Typography variant="subtitle1">{"weighing " + commodity.weight} kg</Typography>
-                                    </Grid>
-                                    <Grid item xs={3}>
-                                        {/*<Item>1</Item>*/}
-                                        <Button sx={{zIndex: 99}} onClick={(e) => {
-                                            alert("eww brotha");
-                                            e?.stopPropagation();
-                                        }}>
-                                            <DeleteIcon></DeleteIcon>
-                                        </Button>
-                                    </Grid>
-                                </Grid>
-                                {/*<Typography variant="subtitle1" sx={{textAlign: "right"}}>bbbbbbbb</Typography>*/}
-                            </ListItemButton>
-                            {/*<ListItemText primary={`Line item ${value}`} />*/}
-                        </ListItem>
-                    ))}
-                </List>
-                {/*<Button onClick={() => console.log(JSON.stringify(currentOpenCommodity))}>log</Button>*/}
-            </Box>
-
-            <Modal
-                open={open}
-                onClose={handleClose}
-                aria-labelledby="modal-modal-title"
-                aria-describedby="modal-modal-description"
-            >
-                <Box sx={{
-                    position: 'absolute' as 'absolute',
-                    top: '50%',
-                    left: '50%',
-                    transform: 'translate(-50%, -50%)',
-                    width: 400,
-                    bgcolor: 'background.paper',
-                    border: '2px solid #000',
-                    boxShadow: 24,
-                    borderRadius: 3,
-                    p: 4,
-                }}>
-                    <Typography id="modal-modal-title" variant="h6" component="h2">
-                        {currentOpenCommodity?.product_name}
-                    </Typography>
-                    <Divider orientation="horizontal" sx={{marginBottom: "5%"}} />
-                    <TextField id="outlined-basic" fullWidth label="weight"
-                               defaultValue={currentOpenCommodity?.weight} InputProps={{
-                        endAdornment: <InputAdornment position="end">kg</InputAdornment>,
-                    }}/>
-                    <Button sx={{color: "grey"}}>Cancel</Button>
-                    <Button>Save</Button>
+                                </ListItemButton>
+                            </ListItem>
+                        ))}
+                    </List>
                 </Box>
-            </Modal>
+
+                <Modal
+                    open={open}
+                    onClose={handleClose}
+                    aria-labelledby="modal-modal-title"
+                    aria-describedby="modal-modal-description"
+                    className="modal"
+                >
+                    <Box sx={{
+                        position: 'absolute' as 'absolute',
+                        top: '50%',
+                        left: '50%',
+                        transform: 'translate(-50%, -50%)',
+                        width: 400,
+                        bgcolor: '#0059c4',
+                        border: '2px solid #000',
+                        boxShadow: 24,
+                        borderRadius: 3,
+                        p: 4,
+                    }}>
+                        <Typography id="modal-modal-title" variant="h6" component="h2">
+                            {currentOpenCommodity?.product_name}
+                        </Typography>
+                        <Divider orientation="horizontal" sx={{marginBottom: "5%"}}/>
+                        <TextField id="outlined-basic" fullWidth label="weight"
+                                   defaultValue={currentOpenCommodity?.weight} InputProps={{
+                            endAdornment: <InputAdornment position="end">kg</InputAdornment>,
+                        }}/>
+                        <Button sx={{color: "grey"}}>Cancel</Button>
+                        <Button>Save</Button>
+                    </Box>
+                </Modal>
+            </div>
         </div>
-        </>
     );
 };
