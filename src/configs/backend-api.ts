@@ -1,4 +1,7 @@
 const api = {
+    auth: {
+        signIn: '/login/'
+    },
     logistics: {
         base: "logistics",
         commodities: "/commodities"
@@ -6,6 +9,6 @@ const api = {
 };
 
 export const BACKEND = {
-    BACKEND_API_URL: "http://localhost:8000/",
+    base: "http://localhost:8000/",
     api: api,
 };
