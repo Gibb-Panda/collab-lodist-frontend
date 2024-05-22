@@ -5,6 +5,7 @@ import {BrowserRouter, Route, Routes} from "react-router-dom";
 import {LandingPage} from "./pages/landingPage/landingPage";
 import Footer from './components/footer/footer';
 import DashboardPage from './components/dashboardPage/dashboardPage';
+import PersonalPage from './components/persolnalPage/personalPage';
 import {LoginPage} from "./pages/landingPage/loginPage";
 import {SignUpPage} from "./pages/landingPage/signUpPage";
 
@@ -18,6 +19,7 @@ function App() {
                     <Route path="/" element={<LandingPage/>}></Route>
                     <Route path="/commodities" element={<Commodities/>}></Route>
                     <Route path="/dashboard" element={<DashboardPage/>}></Route>
+                    <Route path="/personal" element={<PersonalPage/>}></Route>
                     <Route path="/login" element={<LoginPage/>}></Route>
                     <Route path="/signup" element={<SignUpPage/>}></Route>
                 </Routes>
