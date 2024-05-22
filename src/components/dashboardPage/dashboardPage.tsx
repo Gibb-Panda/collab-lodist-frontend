@@ -1,17 +1,20 @@
 import Header from "../header/header";
 import Footer from "../footer/footer";
-import * as React from 'react';
+import React from 'react';
 import Button from '@mui/material/Button';
 import ButtonGroup from '@mui/material/ButtonGroup';
 import Box from '@mui/material/Box';
-
-const buttons = [
-  <Button key="three" sx={{ bgcolor: '#fdeb8c' }}>Waren</Button>,
-  <Button key="one" sx={{ bgcolor: '#fdeb8c' }}>Persönlich</Button>,
-  <Button key="two" sx={{ bgcolor: '#fdeb8c' }}>Verwaltung</Button>,
-];
+import { useNavigate } from 'react-router-dom';
 
 export default function GroupOrientation() {
+  const navigate = useNavigate();
+
+  const buttons = [
+    <Button key="three" sx={{ bgcolor: '#fdeb8c' }} onClick={() => navigate('/commodities')}>Waren</Button>,
+    <Button key="one" sx={{ bgcolor: '#fdeb8c' }} onClick={() => navigate('/personal')}>Persönlich</Button>,
+    <Button key="two" sx={{ bgcolor: '#fdeb8c' }} onClick={() => navigate('/management')}>Verwaltung</Button>,
+  ];
+
   return (
     <Box sx={{ bgcolor: '#4597ff', minHeight: '100vh' }}> {/* Set background color of the page */}
       <Header />
