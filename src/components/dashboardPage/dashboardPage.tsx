@@ -10,9 +10,9 @@ export default function GroupOrientation() {
   const navigate = useNavigate();
 
   const buttons = [
-    <Button key="three" sx={{ bgcolor: '#fdeb8c' }} onClick={() => navigate('/commodities')}>Waren</Button>,
-    <Button key="one" sx={{ bgcolor: '#fdeb8c' }} onClick={() => navigate('/personal')}>Persönlich</Button>,
-    <Button key="two" sx={{ bgcolor: '#fdeb8c' }} onClick={() => navigate('/management')}>Verwaltung</Button>,
+    <Button key="three" sx={{ bgcolor: '#450868' }} onClick={() => navigate('/commodities')}>Waren</Button>,
+    <Button key="one" sx={{ bgcolor: '#450868' }} onClick={() => navigate('/personal')}>Persönlich</Button>,
+    <Button key="two" sx={{ bgcolor: '#450868' }} onClick={() => navigate('/management')}>Verwaltung</Button>,
   ];
 
   return (
