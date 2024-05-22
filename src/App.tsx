@@ -6,6 +6,7 @@ import {LandingPage} from "./pages/landingPage/landingPage";
 import Footer from './components/footer/footer';
 import DashboardPage from './components/dashboardPage/dashboardPage';
 import PersonalPage from './components/persolnalPage/personalPage';
+import ManagementPage from './components/managementPage/managementPage';
 import {LoginPage} from "./pages/landingPage/loginPage";
 import {SignUpPage} from "./pages/landingPage/signUpPage";
 
@@ -20,6 +21,7 @@ function App() {
                     <Route path="/commodities" element={<Commodities/>}></Route>
                     <Route path="/dashboard" element={<DashboardPage/>}></Route>
                     <Route path="/personal" element={<PersonalPage/>}></Route>
+                    <Route path="/management" element={<ManagementPage/>}></Route>
                     <Route path="/login" element={<LoginPage/>}></Route>
                     <Route path="/signup" element={<SignUpPage/>}></Route>
                 </Routes>
