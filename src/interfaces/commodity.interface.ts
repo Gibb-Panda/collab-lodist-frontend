@@ -14,3 +14,14 @@ export interface ICommodity {
     hazardous_goods_class: string
     insurance_value: number
 };
+
+
+
+export interface ICommodityProps {
+    commodity: ICommodity;
+};
+
+export interface ICommodityDetailViewProps {
+    commodity: ICommodity;
+    handleClose: () => void;
+};
