@@ -1,10 +1,8 @@
 import React, {useState} from "react";
-import ButtonAppBar from "../../components/header/header";
 import {useNavigate} from "react-router-dom";
 import {signIn} from "../../services/auth";
 import {setLocalstorage} from "../../services/localstorage.service";
 import {Button, Input} from "@mui/material";
-import {BACKEND} from "../../configs/backend-api";
 
 
 export const LoginPage: React.FC = () => {
@@ -15,7 +13,6 @@ export const LoginPage: React.FC = () => {
     const onSignIn = () => {
         signIn(username, password)
             .then((r: any) => {
-                console.log("this is r: " + JSON.stringify(r));
                 setLocalstorage("accessToken", r.data.access)
                 navigate("/dashboard");
             })

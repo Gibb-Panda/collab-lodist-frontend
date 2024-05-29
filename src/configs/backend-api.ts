@@ -4,7 +4,8 @@ const api = {
     },
     logistics: {
         base: "logistics",
-        commodities: "/commodities"
+        commodities: "/commodities",
+        warehouses: "/warehouses"
     }
 };
 
