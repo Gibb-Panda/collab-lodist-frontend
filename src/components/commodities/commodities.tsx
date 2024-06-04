@@ -14,13 +14,13 @@ import {
     Modal,
     TextField
 } from "@mui/material";
-import {getCommodities, updateCommodity} from "../../services/commodity.service";
+import {createCommodity, deleteCommodity, getCommodities, updateCommodity} from "../../services/commodity.service";
 import {ICommodity, ICommodityDetailViewProps, ICommodityProps} from "../../interfaces/commodity.interface";
 import ButtonAppBar from "../header/header";
 
 
 export const CommodityDetailView: React.FC<ICommodityDetailViewProps> = (props) => {
-    const [commodity, setCommodity] = useState<ICommodity>(props.commodity);
+    const [commodity, setCommodity] = useState<ICommodity|null>(props.commodity!);
     const [open, setOpen] = React.useState(false);
 
     return (
@@ -43,16 +43,73 @@ export const CommodityDetailView: React.FC<ICommodityDetailViewProps> = (props) 
                 borderRadius: 3,
                 p: 4,
             }}>
+                <Typography>haaaaaaa</Typography>
                 <Typography id="modal-modal-title" variant="h6" component="h2">
-                    {commodity.product_name}
+                    {commodity?.product_name}
                 </Typography>
                 <Divider orientation="horizontal" sx={{marginBottom: "5%"}}/>
                 <TextField id="outlined-basic" fullWidth label="weight"
-                           defaultValue={commodity?.weight} onChange={(e) => setCommodity({...commodity, weight: parseInt(e.target.value)})} InputProps={{
-                    endAdornment: <InputAdornment position="end">kg</InputAdornment>,
-                }}/>
+                           defaultValue={commodity?.weight}
+                           onChange={(e) => setCommodity({...commodity!, weight: parseInt(e.target.value)})}
+                           InputProps={{
+                               endAdornment: <InputAdornment position="end">kg</InputAdornment>,
+                           }}/>
+                <TextField id="outlined-basic" fullWidth label="product name"
+                           defaultValue={commodity?.product_name}
+                           onChange={(e) => setCommodity({...commodity!, product_name: e.target.value})}></TextField>
+                <TextField id="outlined-basic" fullWidth label="article number "
+                           defaultValue={commodity?.article_number}
+                           onChange={(e) => setCommodity({...commodity!, article_number: e.target.value})}></TextField>
+                <TextField id="outlined-basic" fullWidth label="height_dimension"
+                           defaultValue={commodity?.height_dimension} onChange={(e) => setCommodity({
+                    ...commodity!,
+                    height_dimension: parseInt(e.target.value)
+                })}></TextField>
+                <TextField id="outlined-basic" fullWidth label="length_dimension"
+                           defaultValue={commodity?.length_dimension} onChange={(e) => setCommodity({
+                    ...commodity!,
+                    length_dimension: parseInt(e.target.value)
+                })}></TextField>
+                <TextField id="outlined-basic" fullWidth label="country_of_origin"
+                           defaultValue={commodity?.country_of_origin} onChange={(e) => setCommodity({
+                    ...commodity!,
+                    country_of_origin: e.target.value
+                })}></TextField>
+                <TextField id="outlined-basic" fullWidth label="expiry_date"
+                           defaultValue={commodity?.expiry_date} onChange={(e) => setCommodity({
+                    ...commodity!,
+                    expiry_date: new Date(e.target.value)
+                })}></TextField>
+                <TextField id="outlined-basic" fullWidth label="storage_condition_requirement"
+                           defaultValue={commodity?.storage_condition_requirement} onChange={(e) => setCommodity({
+                    ...commodity!,
+                    storage_condition_requirement: parseInt(e.target.value)
+                })}></TextField>
+                <TextField id="outlined-basic" fullWidth label="customs_tariff_number"
+                           defaultValue={commodity?.customs_tariff_number} onChange={(e) => setCommodity({
+                    ...commodity!,
+                    customs_tariff_number: e.target.value
+                })}></TextField>
+                <TextField id="outlined-basic" fullWidth label="packaging_information"
+                           defaultValue={commodity?.packaging_information} onChange={(e) => setCommodity({
+                    ...commodity!,
+                    packaging_information: e.target.value
+                })}></TextField>
+                <TextField id="outlined-basic" fullWidth label="hazardous_goods_class"
+                           defaultValue={commodity?.hazardous_goods_class} onChange={(e) => setCommodity({
+                    ...commodity!,
+                    hazardous_goods_class: parseInt(e.target.value)
+                })}></TextField>
+                <TextField id="outlined-basic" fullWidth label="insurance_value"
+                           defaultValue={commodity?.insurance_value} onChange={(e) => setCommodity({
+                    ...commodity!,
+                    insurance_value: parseInt(e.target.value)
+                })}></TextField>
                 <Button sx={{color: "grey"}}>Cancel</Button>
-                <Button onClick={() => updateCommodity(commodity)}>Save</Button>
+                {commodity?.id ?
+                    <Button onClick={() => updateCommodity(commodity)}>Save</Button>:
+                    <Button onClick={() => createCommodity(commodity!)}>Create</Button>
+                }
             </Box>
         </Modal>
 
@@ -96,6 +153,7 @@ export const Commodity: React.FC<ICommodityProps> = (props) => {
                                 <Button sx={{zIndex: 99}} onClick={(e) => {
                                     alert("eww brotha");
                                     e?.stopPropagation();
+                                    deleteCommodity(commodity.id!);
                                 }}>
                                     <DeleteIcon></DeleteIcon>
                                 </Button>
@@ -104,7 +162,8 @@ export const Commodity: React.FC<ICommodityProps> = (props) => {
                     </ListItemButton>
                 </ListItem>
                 {isDetailViewOpen ?
-                    <CommodityDetailView commodity={commodity} handleClose={() => setIsDetailViewOpen(false)}></CommodityDetailView> : null
+                    <CommodityDetailView commodity={commodity}
+                                         handleClose={() => setIsDetailViewOpen(false)}></CommodityDetailView> : null
                 }
             </>
         </>
@@ -115,6 +174,7 @@ export const Commodities: React.FC = () => {
     const [commodities, setCommodities] = useState<ICommodity[]>([]);
     const [open, setOpen] = React.useState(false);
     const [currentOpenCommodity, setCurrentOpenCommodity] = useState<ICommodity | null>(null);
+    const [isCreateModalOpen, setIsCreateModalOpen] = useState<boolean>(false);
     const handleOpen = (commodity: ICommodity) => {
         setOpen(true);
         setCurrentOpenCommodity(commodities.find(c => c.id == commodity.id)!);
@@ -137,6 +197,11 @@ export const Commodities: React.FC = () => {
             <div style={{backgroundColor: '#0059c4', minHeight: '100vh', padding: '20px'}}>
 
                 <Typography variant="h3" align="center">Waren</Typography>
+                <Button onClick={() => setIsCreateModalOpen(true)}>Create new commodity</Button>
+                {isCreateModalOpen?
+                    <CommodityDetailView commodity={null} handleClose={() => setIsCreateModalOpen(false)}></CommodityDetailView>:
+                    null
+                }
 
                 <Box display="flex" justifyContent="center">
                     <List sx={{
