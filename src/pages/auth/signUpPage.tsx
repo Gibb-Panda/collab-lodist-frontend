@@ -1,6 +1,6 @@
 import React, {useState} from "react";
 import {useNavigate} from "react-router-dom";
-import {signIn, signUp} from "../../services/auth";
+import {signIn, signUp} from "../../services/auth.service";
 import {setLocalstorage} from "../../services/localstorage.service";
 import {Button, Input} from "@mui/material";
 import {ISignUpData} from "../../interfaces/auth.interface";
