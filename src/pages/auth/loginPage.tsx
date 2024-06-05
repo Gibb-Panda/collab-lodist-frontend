@@ -20,7 +20,6 @@ export const LoginPage: React.FC = () => {
 
     return (
         <>
-            <ButtonAppBar></ButtonAppBar>
             <h1>login</h1>
             <Input placeholder='username' value={username} onChange={(e) => setUsername(e.target.value)}></Input>
             <Input placeholder='password' value={password} onChange={(e) => setPassword(e.target.value)}></Input>
