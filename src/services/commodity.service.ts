@@ -12,7 +12,7 @@ export const getCommodities = async (): Promise<{ data: ICommodity[] }> => {
 export const updateCommodity = async (commodity: ICommodity): Promise<{ data: ICommodity[] }> => {
     return axios.put(LOGISTICS + BACKEND.api.logistics.commodities + '/' + commodity.id, {
         ...commodity,
-        expiry_date: commodity.expiry_date.toISOString().slice(0, 10)
+        expiry_date: new Date(commodity.expiry_date).toISOString().slice(0, 10)
     });
 }
 

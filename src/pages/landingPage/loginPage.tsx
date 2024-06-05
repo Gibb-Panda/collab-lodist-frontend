@@ -11,7 +11,7 @@ export const LoginPage: React.FC = () => {
     const navigate = useNavigate();
 
     const onSignIn = () => {
-        signIn(username, password)
+        signIn({username: username, password: password})
             .then((r: any) => {
                 setLocalstorage("accessToken", r.data.access)
                 navigate("/dashboard");
