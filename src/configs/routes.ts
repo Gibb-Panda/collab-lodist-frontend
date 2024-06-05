@@ -14,7 +14,7 @@ export const routes: IRoute[] = [
     {
         name: "Vehicles",
         icon: DeleteIcon,
-        path: "/vehicles"
+        path: "/commodities"
     },
     {
         name: "Locations",

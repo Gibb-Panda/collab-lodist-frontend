@@ -1,10 +1,12 @@
 const api = {
     auth: {
-        signIn: '/login/'
+        signIn: '/login/',
+        signUp: '/signup/'
     },
     logistics: {
         base: "logistics",
-        commodities: "/commodities"
+        commodities: "/commodities",
+        warehouses: "/warehouses"
     }
 };
 
