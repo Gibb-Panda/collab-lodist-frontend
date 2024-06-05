@@ -4,8 +4,8 @@ import {BrowserRouter, Route, Routes} from "react-router-dom";
 import {LandingPage} from "./pages/landingPage/landingPage";
 import Footer from './components/footer/footer';
 import DashboardPage from './components/dashboardPage/dashboardPage';
-import {LoginPage} from "./pages/landingPage/loginPage";
-import {SignUpPage} from "./pages/landingPage/signUpPage";
+import {LoginPage} from "./pages/auth/loginPage";
+import {SignUpPage} from "./pages/auth/signUpPage";
 import { Commodities } from './components/commodities/commodities';
 
 
