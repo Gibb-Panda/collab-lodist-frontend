@@ -9,16 +9,12 @@ import { useNavigate } from 'react-router-dom';
 export default function GroupOrientation() {
   const navigate = useNavigate();
 
-  const buttons = [
-    <Button key="three" sx={{ bgcolor: '#450868' }} onClick={() => navigate('/commodities')}>Waren</Button>,
-    <Button key="one" sx={{ bgcolor: '#450868' }} onClick={() => navigate('/personal')}>Persönlich</Button>,
-    <Button key="two" sx={{ bgcolor: '#450868' }} onClick={() => navigate('/management')}>Verwaltung</Button>,
-  ];
+  
 
   return (
     <Box sx={{ bgcolor: '#4597ff', minHeight: '100vh' }}> {/* Set background color of the page */}
       <Header />
-      <h1>Menü</h1>
+      <h1>Personal page</h1>
 
       <Box
         sx={{
@@ -29,13 +25,7 @@ export default function GroupOrientation() {
           },
         }}
       >
-        <ButtonGroup
-          orientation="vertical"
-          aria-label="Vertical button group"
-          variant="contained"
-        >
-          {buttons}
-        </ButtonGroup>
+        
       </Box>
 
       <Footer />

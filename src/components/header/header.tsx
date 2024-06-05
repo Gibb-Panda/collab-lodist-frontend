@@ -8,7 +8,7 @@ import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
-import {useNavigate} from "react-router-dom";
+import {useNavigate, Link} from "react-router-dom";
 
 
 export default function ButtonAppBar() {
@@ -23,6 +23,11 @@ export default function ButtonAppBar() {
     const handleSelect = (route: string) => {
         setAnchorEl(null);
         navigate(route);
+    };
+
+    const handleLogout = () => {
+        // Perform any logout logic here (e.g., clearing tokens)
+        navigate('/');  // Redirect to the home route
     };
 
     return (
@@ -61,9 +66,11 @@ export default function ButtonAppBar() {
                         <MenuIcon/>
                     </IconButton>
                     <Typography variant="h6" component="div" sx={{flexGrow: 1}}>
-                        Collab Lodist
+                    <Link to="/" style={{ color: 'inherit', textDecoration: 'none' }}>
+                            Collab Lodist
+                        </Link>
                     </Typography>
-                    <Button color="inherit">Logout</Button>
+                    <Button color="inherit" onClick={handleLogout}>Logout</Button>
                 </Toolbar>
             </AppBar>
         </Box>
