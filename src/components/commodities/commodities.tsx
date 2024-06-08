@@ -135,6 +135,7 @@ export const Commodity: React.FC<ICommodityProps> = (props) => {
                     disableGutters
                     sx={{
                         border: "2px solid grey",
+                        borderColor: "black",
                         borderRadius: 3,
                         margin: "1%",
                         padding: 0,
@@ -202,15 +203,16 @@ export const Commodities: React.FC = () => {
             <ButtonAppBar/>
             <div style={{backgroundColor: '#4597ff', minHeight: '100vh', padding: '20px'}}>
 
-                <Typography variant="h3" align="center">Waren</Typography>
-                <Button onClick={() => setIsCreateModalOpen(true)}>Create new commodity</Button>
+                <Typography style={{color: 'black' }} variant="h3" align="center">Waren</Typography>
+                <Button style={{color: 'black' }}
+                onClick={() => setIsCreateModalOpen(true)}>Neue Ware erstellen</Button>
                 {isCreateModalOpen ?
                     <CommodityDetailView commodity={null}
                                          handleClose={() => setIsCreateModalOpen(false)}></CommodityDetailView> :
                     null
                 }
 
-                <Box display="flex" justifyContent="center">
+                <Box style={{color: 'black' }} display="flex" justifyContent="center">
                     <List sx={{
                         width: '90%',
                         justify: "center",
