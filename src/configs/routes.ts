@@ -1,7 +1,6 @@
 import {IRoute} from "../interfaces/routes";
 import DeleteIcon from '@mui/icons-material/Delete';
 
-
 /*
  * routes is used to achieve single point of change for
  * all routes in use. This is currently not in use

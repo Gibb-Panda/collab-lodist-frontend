@@ -10,7 +10,6 @@ import {
     List,
     ListItem,
     ListItemButton,
-    ListItemText,
     Modal,
     TextField
 } from "@mui/material";
