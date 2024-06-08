@@ -138,7 +138,7 @@ export const Commodity: React.FC<ICommodityProps> = (props) => {
                         borderRadius: 3,
                         margin: "1%",
                         padding: 0,
-                        bgcolor: '#2660a3'
+                        bgcolor: '#4597ff'
                     }}
                     onClick={() => setIsDetailViewOpen(true)}
                 >
@@ -200,7 +200,7 @@ export const Commodities: React.FC = () => {
     return (
         <div className="commodity-component">
             <ButtonAppBar/>
-            <div style={{backgroundColor: '#0059c4', minHeight: '100vh', padding: '20px'}}>
+            <div style={{backgroundColor: '#4597ff', minHeight: '100vh', padding: '20px'}}>
 
                 <Typography variant="h3" align="center">Waren</Typography>
                 <Button onClick={() => setIsCreateModalOpen(true)}>Create new commodity</Button>
