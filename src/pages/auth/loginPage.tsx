@@ -6,6 +6,7 @@ import {Button, Input} from "@mui/material";
 import './loginPage.css';
 
 
+// this is the login page component. It enables users to log in with their username and password
 export const LoginPage: React.FC = () => {
     const [username, setUsername] = useState<string>("");
     const [password, setPassword] = useState<string>("");

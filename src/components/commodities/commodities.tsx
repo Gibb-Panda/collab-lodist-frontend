@@ -19,6 +19,13 @@ import {ICommodity, ICommodityDetailViewProps, ICommodityProps} from "../../inte
 import ButtonAppBar from "../header/header";
 
 
+/**
+ * This component renders a modal for displaying and editing commodity details.
+ * @param {Object} props - The component props.
+ * @param {ICommodity} props.commodity - The initial commodity data.
+ * @param {function} props.handleClose - The function to call when the modal is closed.
+ * @param {function} props.fetchCommodities - The function to fetch the list of commodities.
+ */
 export const CommodityDetailView: React.FC<ICommodityDetailViewProps> = (props) => {
     const [commodity, setCommodity] = useState<ICommodity | null>(props.commodity!);
 
@@ -46,19 +53,20 @@ export const CommodityDetailView: React.FC<ICommodityDetailViewProps> = (props) 
                     {commodity?.product_name}
                 </Typography>
                 <Divider orientation="horizontal" sx={{marginBottom: "5%"}}/>
+                <Button onClick={() => props.fetchCommodities()}>fetch commoditieds</Button>
                 <form>
-                    <TextField id="outlined-basic" fullWidth label="weight"
-                               defaultValue={commodity?.weight}
-                               onChange={(e) => setCommodity({...commodity!, weight: parseInt(e.target.value)})}
-                               InputProps={{
-                                   endAdornment: <InputAdornment position="end">kg</InputAdornment>,
-                               }}/>
                     <TextField id="outlined-basic" fullWidth label="product name"
                                defaultValue={commodity?.product_name}
                                onChange={(e) => setCommodity({
                                    ...commodity!,
                                    product_name: e.target.value
                                })}></TextField>
+                    <TextField id="outlined-basic" fullWidth label="weight"
+                               defaultValue={commodity?.weight}
+                               onChange={(e) => setCommodity({...commodity!, weight: parseInt(e.target.value)})}
+                               InputProps={{
+                                   endAdornment: <InputAdornment position="end">kg</InputAdornment>,
+                               }}/>
                     <TextField id="outlined-basic" fullWidth label="article number "
                                defaultValue={commodity?.article_number}
                                onChange={(e) => setCommodity({
@@ -112,8 +120,20 @@ export const CommodityDetailView: React.FC<ICommodityDetailViewProps> = (props) 
                     })}></TextField>
                     <Button sx={{color: "grey"}}>Cancel</Button>
                     {commodity?.id ?
-                        <Button onClick={() => updateCommodity(commodity)}>Save</Button> :
-                        <Button onClick={() => createCommodity(commodity!)}>Create</Button>
+                        <Button onClick={() => {
+                            updateCommodity(commodity)
+                                .then(r => {
+                                    props.fetchCommodities();
+                                    props.handleClose();
+                                });
+                        }}>Save</Button> :
+                        <Button onClick={() => {
+                            createCommodity(commodity!)
+                                .then(r => {
+                                    props.fetchCommodities();
+                                    props.handleClose();
+                                });
+                        }}>Create</Button>
                     }
                 </form>
             </Box>
@@ -123,6 +143,16 @@ export const CommodityDetailView: React.FC<ICommodityDetailViewProps> = (props) 
 };
 
 
+/**
+ * This component renders a list item representing a commodity.
+ * @param {Object} props - The component props.
+ * @param {ICommodity} props.commodity - The commodity object to be displayed.
+ * @param {function} props.fetchCommodities - A function to fetch the updated list of commodities.
+ *
+ * The component displays the commodity's name, expiry date, weight, and a delete button.
+ * Clicking on the list item opens a detail view for the commodity.
+ * The delete button removes the commodity from the list.
+ */
 export const Commodity: React.FC<ICommodityProps> = (props) => {
     const [commodity, setCommodity] = useState<ICommodity>(props.commodity);
     const [isDetailViewOpen, setIsDetailViewOpen] = useState<boolean>(false);
@@ -158,9 +188,11 @@ export const Commodity: React.FC<ICommodityProps> = (props) => {
                             </Grid>
                             <Grid item xs={3}>
                                 <Button sx={{zIndex: 99}} onClick={(e) => {
-                                    alert("eww brotha");
                                     e?.stopPropagation();
-                                    deleteCommodity(commodity.id!);
+                                    deleteCommodity(commodity.id!)
+                                        .then(r => {
+                                            props.fetchCommodities();
+                                        });
                                 }}>
                                     <DeleteIcon></DeleteIcon>
                                 </Button>
@@ -169,7 +201,7 @@ export const Commodity: React.FC<ICommodityProps> = (props) => {
                     </ListItemButton>
                 </ListItem>
                 {isDetailViewOpen ?
-                    <CommodityDetailView commodity={commodity}
+                    <CommodityDetailView commodity={commodity} fetchCommodities={props.fetchCommodities}
                                          handleClose={() => setIsDetailViewOpen(false)}></CommodityDetailView> : null
                 }
             </>
@@ -177,24 +209,28 @@ export const Commodity: React.FC<ICommodityProps> = (props) => {
     );
 };
 
+/**
+ * This component represents the main view for managing commodities.
+ * It fetches and displays a list of commodities, allows creating a new commodity,
+ * and opens a detail view for each commodity.
+ * It renders a header, a button to create a new commodity,
+ * a modal for creating/editing a commodity, and a list of commodities.
+ */
 export const Commodities: React.FC = () => {
     const [commodities, setCommodities] = useState<ICommodity[]>([]);
-    const [open, setOpen] = React.useState(false);
-    const [currentOpenCommodity, setCurrentOpenCommodity] = useState<ICommodity | null>(null);
     const [isCreateModalOpen, setIsCreateModalOpen] = useState<boolean>(false);
-    const handleOpen = (commodity: ICommodity) => {
-        setOpen(true);
-        setCurrentOpenCommodity(commodities.find(c => c.id == commodity.id)!);
 
-    }
-    const handleClose = () => setOpen(false);
 
-    useEffect(() => {
+    // this function is used to fetch the commodities and also to refetch them on changes
+    const fetchCommodities = () => {
         getCommodities().then((r: { data: ICommodity[] }) => {
-            console.log("htee  commodities: " + JSON.stringify(r));
             setCommodities(r.data);
-
         });
+    };
+
+    // this useEffect is used to fetch all the commodities when this list component gets loaded
+    useEffect(() => {
+        fetchCommodities();
     }, []);
 
 
@@ -207,9 +243,9 @@ export const Commodities: React.FC = () => {
                 <Button style={{color: 'black' }}
                 onClick={() => setIsCreateModalOpen(true)}>Neue Ware erstellen</Button>
                 {isCreateModalOpen ?
-                    <CommodityDetailView commodity={null}
-                                         handleClose={() => setIsCreateModalOpen(false)}></CommodityDetailView> :
-                    null
+                    <CommodityDetailView commodity={null} fetchCommodities={fetchCommodities}
+                                         handleClose={() => setIsCreateModalOpen(false)}></CommodityDetailView>
+                    : null
                 }
 
                 <Box style={{color: 'black' }} display="flex" justifyContent="center">
@@ -219,7 +255,8 @@ export const Commodities: React.FC = () => {
                         alignItems: "center",
                     }}>
                         {commodities.map(commodity => (
-                            <Commodity commodity={commodity}></Commodity>
+                            <Commodity key={Math.random()} commodity={commodity}
+                                       fetchCommodities={fetchCommodities}></Commodity>
                         ))}
                     </List>
                 </Box>

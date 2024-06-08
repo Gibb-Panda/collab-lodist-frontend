@@ -7,6 +7,7 @@ import {ISignUpData} from "../../interfaces/auth.interface";
 import './signUpPage.css';
 
 
+// this is the sign up page component. It enables users to to sign up with a username, firstname, lastname, email and a password
 export const SignUpPage: React.FC = () => {
     const [signUpData, setSignUpData] = useState<ISignUpData|null>(null);
     const navigate = useNavigate();
