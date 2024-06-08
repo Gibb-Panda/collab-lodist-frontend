@@ -1,6 +1,5 @@
 import Header from "../header/header";
 import Footer from "../footer/footer";
-import React from 'react';
 import Button from '@mui/material/Button';
 import ButtonGroup from '@mui/material/ButtonGroup';
 import Box from '@mui/material/Box';

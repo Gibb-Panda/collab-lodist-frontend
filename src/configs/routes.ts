@@ -1,6 +1,5 @@
 import {IRoute} from "../interfaces/routes";
 import DeleteIcon from '@mui/icons-material/Delete';
-import {DOMElement} from "react";
 
 
 
