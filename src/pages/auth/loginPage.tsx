@@ -3,6 +3,7 @@ import {useNavigate} from "react-router-dom";
 import {signIn} from "../../services/auth.service";
 import {setLocalstorage} from "../../services/localstorage.service";
 import {Button, Input} from "@mui/material";
+import './loginPage.css';
 
 
 export const LoginPage: React.FC = () => {
@@ -20,10 +21,12 @@ export const LoginPage: React.FC = () => {
 
     return (
         <>
+            <div className="login-page">
             <h1>login</h1>
-            <Input placeholder='username' value={username} onChange={(e) => setUsername(e.target.value)}></Input>
-            <Input placeholder='password' value={password} onChange={(e) => setPassword(e.target.value)}></Input>
-            <Button onClick={() => onSignIn()}>sign in</Button>
+            <Input className="input-field" placeholder='username' value={username} onChange={(e) => setUsername(e.target.value)}></Input>
+            <Input className="input-field" placeholder='password' value={password} onChange={(e) => setPassword(e.target.value)}></Input>
+            <Button className="sign-in-button" onClick={() => onSignIn()}>sign in</Button>
+            </div>
         </>
     )
 };

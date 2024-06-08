@@ -5,6 +5,7 @@ import "./landingPage.css";
 import logistics from "./img/logistics.jpg";
 import ButtonGroup from '@mui/material/ButtonGroup';
 import Button from '@mui/material/Button';
+import { rm } from "fs";
 
 const landingPageStyle: CSSProperties = {
   backgroundImage: `url(${logistics})`,
@@ -14,17 +15,20 @@ const landingPageStyle: CSSProperties = {
   display: 'flex',
   flexDirection: 'column',
   justifyContent: 'flex-start',
-  alignItems: 'flex-end', // Align items to the right side of the container
-  padding: '20px',
+  alignItems: 'flex-start', 
+  padding: '85px',
+  paddingTop:'1vh',
 };
 
 const buttonGroupStyle: CSSProperties = {
-  marginTop: '50px', // Move the buttons higher
+  marginTop: '30px',
 };
 
 const buttonStyle: CSSProperties = {
-  color: 'white', // Set text color to white
-  backgroundColor: 'black', // Set background color to black
+  color: 'white',
+  backgroundColor: 'black',
+  marginLeft: '10px',
+  marginRight: '20px'
 };
 
 const titleStyle: CSSProperties = {
