@@ -6,6 +6,7 @@ import {Button, Input} from "@mui/material";
 import {ISignUpData} from "../../interfaces/auth.interface";
 
 
+// this is the sign up page component. It enables users to to sign up with a username, firstname, lastname, email and a password
 export const SignUpPage: React.FC = () => {
     const [signUpData, setSignUpData] = useState<ISignUpData|null>(null);
     const navigate = useNavigate();

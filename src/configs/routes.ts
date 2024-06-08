@@ -1,10 +1,13 @@
 import {IRoute} from "../interfaces/routes";
 import DeleteIcon from '@mui/icons-material/Delete';
-import {DOMElement} from "react";
 
 
-
-
+/*
+ * routes is used to achieve single point of change for
+ * all routes in use. This is currently not in use
+ * anymore, * but will in the future when developing this
+ * web application further.
+ */
 export const routes: IRoute[] = [
     {
         name: "Home",

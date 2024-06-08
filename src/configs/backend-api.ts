@@ -1,3 +1,4 @@
+// this is used to centralize all backend endpoints
 const api = {
     auth: {
         signIn: '/login/',
@@ -10,6 +11,7 @@ const api = {
     }
 };
 
+// here are backend URLs located
 export const BACKEND = {
     base: "http://localhost:8000/",
     api: api,

@@ -1,3 +1,4 @@
+// Commodity represents a commodity in our application
 export interface ICommodity {
     id?: number;
     article_number: string;
@@ -15,11 +16,16 @@ export interface ICommodity {
     insurance_value: number;
 };
 
+
+// ICommodityProps representes the properties of the commodity component
 export interface ICommodityProps {
     commodity: ICommodity;
+    fetchCommodities: () => void;
 };
 
+// ICommodityProps representes the properties of the commodity detail view component
 export interface ICommodityDetailViewProps {
     commodity: ICommodity|null;
     handleClose: () => void;
+    fetchCommodities: () => void;
 };
