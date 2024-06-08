@@ -28,7 +28,7 @@ export const SignUpPage: React.FC = () => {
             <Input placeholder='firstname' value={signUpData?.first_name} onChange={(e) => setSignUpData({...signUpData!, first_name: e.target.value})}></Input>
             <Input placeholder='lastname' value={signUpData?.last_name} onChange={(e) => setSignUpData({...signUpData!, last_name: e.target.value})}></Input>
             <Input placeholder='email' value={signUpData?.email} onChange={(e) => setSignUpData({...signUpData!, email: e.target.value})}></Input>
-            <Input placeholder='password' value={signUpData?.password} onChange={(e) => setSignUpData({...signUpData!, password: e.target.value})}></Input>
+            <Input placeholder='password' type='password' value={signUpData?.password} onChange={(e) => setSignUpData({...signUpData!, password: e.target.value})}></Input>
             <Button onClick={() => onSignUp()}>sign in</Button>
             </div>
         </>
