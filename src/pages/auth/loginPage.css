@@ -11,18 +11,18 @@
 
 h1 {
     font-size: 2.5rem; /* Adjust the size as needed */
-    margin-bottom: 1rem;
+    margin-bottom: 3rem;
     color: black; /* Override color to ensure it's black */
 }
 
 .input-field {
-    font-size: 1.5rem; /* Adjust the size as needed */
-    margin-bottom: 1rem; /* Add some spacing between fields */
-    color: black; /* Ensure input text color is black */
+    font-size: 2rem; /* Adjust the size as needed */
+    margin-bottom: 2rem; /* Add some spacing between fields */
+    color: #000000; /* Ensure input text color is black */
 }
 
 .sign-in-button {
-    font-size: 1.5rem; /* Adjust the size as needed */
+    font-size: 2rem; /* Adjust the size as needed */
     color: black; /* Ensure button text color is black */
 }
 

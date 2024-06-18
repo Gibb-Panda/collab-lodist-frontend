@@ -22,13 +22,13 @@ export const SignUpPage: React.FC = () => {
     return (
         <> 
             <div className="signup-page">
-            <h1>sign up</h1>
-            <Input placeholder='username' value={signUpData?.username} onChange={(e) => setSignUpData({...signUpData!, username: e.target.value})}></Input>
-            <Input placeholder='firstname' value={signUpData?.first_name} onChange={(e) => setSignUpData({...signUpData!, first_name: e.target.value})}></Input>
-            <Input placeholder='lastname' value={signUpData?.last_name} onChange={(e) => setSignUpData({...signUpData!, last_name: e.target.value})}></Input>
-            <Input placeholder='email' value={signUpData?.email} onChange={(e) => setSignUpData({...signUpData!, email: e.target.value})}></Input>
-            <Input placeholder='password' value={signUpData?.password} onChange={(e) => setSignUpData({...signUpData!, password: e.target.value})}></Input>
-            <Button onClick={() => onSignUp()}>sign in</Button>
+            <h1>login erstellen</h1>
+            <Input className="input-field" placeholder='Benutzername' value={signUpData?.username} onChange={(e) => setSignUpData({...signUpData!, username: e.target.value})}></Input>
+            <Input className="input-field" placeholder='Vorname' value={signUpData?.first_name} onChange={(e) => setSignUpData({...signUpData!, first_name: e.target.value})}></Input>
+            <Input className="input-field" placeholder='Nachname' value={signUpData?.last_name} onChange={(e) => setSignUpData({...signUpData!, last_name: e.target.value})}></Input>
+            <Input className="input-field" placeholder='Email' value={signUpData?.email} onChange={(e) => setSignUpData({...signUpData!, email: e.target.value})}></Input>
+            <Input className="input-field" placeholder='Passwort' value={signUpData?.password} onChange={(e) => setSignUpData({...signUpData!, password: e.target.value})}></Input>
+            <Button className="sign-up-button" onClick={() => onSignUp()}>Login erstellen</Button>
             </div>
         </>
     )

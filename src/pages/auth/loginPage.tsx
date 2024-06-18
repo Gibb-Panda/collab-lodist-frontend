@@ -23,9 +23,9 @@ export const LoginPage: React.FC = () => {
         <>
             <div className="login-page">
             <h1>login</h1>
-            <Input className="input-field" placeholder='username' value={username} onChange={(e) => setUsername(e.target.value)}></Input>
-            <Input className="input-field" placeholder='password' value={password} onChange={(e) => setPassword(e.target.value)}></Input>
-            <Button className="sign-in-button" onClick={() => onSignIn()}>sign in</Button>
+            <Input className="input-field" placeholder='Benutzername' value={username} onChange={(e) => setUsername(e.target.value)}></Input>
+            <Input className="input-field" placeholder='Passwort' value={password} onChange={(e) => setPassword(e.target.value)}></Input>
+            <Button className="sign-in-button" onClick={() => onSignIn()}>anmelden</Button>
             </div>
         </>
     )
