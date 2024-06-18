@@ -36,6 +36,7 @@ export const CommodityDetailView: React.FC<ICommodityDetailViewProps> = (props) 
                 transform: 'translate(-50%, -50%)',
                 width: 400,
                 bgcolor: '#0059c4',
+                color: 'black',
                 border: '2px solid #000',
                 boxShadow: 24,
                 borderRadius: 3,
@@ -46,73 +47,73 @@ export const CommodityDetailView: React.FC<ICommodityDetailViewProps> = (props) 
                 </Typography>
                 <Divider orientation="horizontal" sx={{marginBottom: "5%"}}/>
                 <form>
-                    <TextField id="outlined-basic" fullWidth label="weight"
+                    <TextField id="outlined-basic" fullWidth label="weight" sx={{marginBottom: "2%"}}
                                defaultValue={commodity?.weight}
                                onChange={(e) => setCommodity({...commodity!, weight: parseInt(e.target.value)})}
                                InputProps={{
                                    endAdornment: <InputAdornment position="end">kg</InputAdornment>,
                                }}/>
-                    <TextField id="outlined-basic" fullWidth label="product name"
+                    <TextField id="outlined-basic" fullWidth label="product name" sx={{marginBottom: "2%"}}
                                defaultValue={commodity?.product_name}
                                onChange={(e) => setCommodity({
                                    ...commodity!,
                                    product_name: e.target.value
                                })}></TextField>
-                    <TextField id="outlined-basic" fullWidth label="article number "
+                    <TextField id="outlined-basic" fullWidth label="article number " sx={{marginBottom: "2%"}}
                                defaultValue={commodity?.article_number}
                                onChange={(e) => setCommodity({
                                    ...commodity!,
                                    article_number: e.target.value
                                })}></TextField>
-                    <TextField id="outlined-basic" fullWidth label="height_dimension"
+                    <TextField id="outlined-basic" fullWidth label="height_dimension" sx={{marginBottom: "2%"}}
                                defaultValue={commodity?.height_dimension} onChange={(e) => setCommodity({
                         ...commodity!,
                         height_dimension: parseInt(e.target.value)
                     })}></TextField>
-                    <TextField id="outlined-basic" fullWidth label="length_dimension"
+                    <TextField id="outlined-basic" fullWidth label="length_dimension" sx={{marginBottom: "2%"}}
                                defaultValue={commodity?.length_dimension} onChange={(e) => setCommodity({
                         ...commodity!,
                         length_dimension: parseInt(e.target.value)
                     })}></TextField>
-                    <TextField id="outlined-basic" fullWidth label="country_of_origin"
+                    <TextField id="outlined-basic" fullWidth label="country_of_origin" sx={{marginBottom: "2%"}}
                                defaultValue={commodity?.country_of_origin} onChange={(e) => setCommodity({
                         ...commodity!,
                         country_of_origin: e.target.value
                     })}></TextField>
-                    <TextField id="outlined-basic" fullWidth label="expiry_date"
+                    <TextField id="outlined-basic" fullWidth label="expiry_date" sx={{marginBottom: "2%"}}
                                defaultValue={commodity?.expiry_date} onChange={(e) => setCommodity({
                         ...commodity!,
                         expiry_date: new Date(e.target.value)
                     })}></TextField>
-                    <TextField id="outlined-basic" fullWidth label="storage_condition_requirement"
+                    <TextField id="outlined-basic" fullWidth label="storage_condition_requirement" sx={{marginBottom: "2%"}}
                                defaultValue={commodity?.storage_condition_requirement} onChange={(e) => setCommodity({
                         ...commodity!,
                         storage_condition_requirement: parseInt(e.target.value)
                     })}></TextField>
-                    <TextField id="outlined-basic" fullWidth label="customs_tariff_number"
+                    <TextField id="outlined-basic" fullWidth label="customs_tariff_number" sx={{marginBottom: "2%"}}
                                defaultValue={commodity?.customs_tariff_number} onChange={(e) => setCommodity({
                         ...commodity!,
                         customs_tariff_number: e.target.value
                     })}></TextField>
-                    <TextField id="outlined-basic" fullWidth label="packaging_information"
+                    <TextField id="outlined-basic" fullWidth label="packaging_information" sx={{marginBottom: "2%"}}
                                defaultValue={commodity?.packaging_information} onChange={(e) => setCommodity({
                         ...commodity!,
                         packaging_information: e.target.value
                     })}></TextField>
-                    <TextField id="outlined-basic" fullWidth label="hazardous_goods_class"
+                    <TextField id="outlined-basic" fullWidth label="hazardous_goods_class" sx={{marginBottom: "2%"}}
                                defaultValue={commodity?.hazardous_goods_class} onChange={(e) => setCommodity({
                         ...commodity!,
                         hazardous_goods_class: parseInt(e.target.value)
                     })}></TextField>
-                    <TextField id="outlined-basic" fullWidth label="insurance_value"
+                    <TextField id="outlined-basic" fullWidth label="insurance_value" sx={{marginBottom: "2%"}}
                                defaultValue={commodity?.insurance_value} onChange={(e) => setCommodity({
                         ...commodity!,
                         insurance_value: parseInt(e.target.value)
                     })}></TextField>
-                    <Button sx={{color: "grey"}}>Cancel</Button>
+                    <Button sx={{ bgcolor: '#fffde7', color: 'black', marginRight: '1vw', marginTop: '1vw'}}>Cancel</Button>
                     {commodity?.id ?
-                        <Button onClick={() => updateCommodity(commodity)}>Save</Button> :
-                        <Button onClick={() => createCommodity(commodity!)}>Create</Button>
+                        <Button sx={{ bgcolor: '#fffde7', color: 'black', marginTop: '1vw', fontWeight: 'fontWeightMedium'}} onClick={() => updateCommodity(commodity)}>Save</Button> :
+                        <Button sx={{ bgcolor: '#fffde7', color: 'black', marginTop: '1vw'}} onClick={() => createCommodity(commodity!)}>Create</Button>
                     }
                 </form>
             </Box>
@@ -161,7 +162,7 @@ export const Commodity: React.FC<ICommodityProps> = (props) => {
                                     e?.stopPropagation();
                                     deleteCommodity(commodity.id!);
                                 }}>
-                                    <DeleteIcon></DeleteIcon>
+                                    <DeleteIcon sx={{color: 'black'}}></DeleteIcon>
                                 </Button>
                             </Grid>
                         </Grid>
@@ -203,7 +204,8 @@ export const Commodities: React.FC = () => {
             <div style={{backgroundColor: '#4597ff', minHeight: '100vh', padding: '20px'}}>
 
                 <Typography style={{color: 'black' }} variant="h3" align="center">Waren</Typography>
-                <Button style={{color: 'black' }}
+                <Button style={{color: 'black', fontSize: '18px', marginLeft: '11vh',
+    fontWeight: 'bold',}}
                 onClick={() => setIsCreateModalOpen(true)}>Neue Ware erstellen</Button>
                 {isCreateModalOpen ?
                     <CommodityDetailView commodity={null}
